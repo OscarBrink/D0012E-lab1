@@ -1,4 +1,7 @@
-from random import choice, randint
+from random import choice, randint, seed
+from time import time
+
+import graphics
 
 def quicksort(lst, f=None, pivot=None):
 
