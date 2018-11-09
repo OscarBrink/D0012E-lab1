@@ -8,26 +8,24 @@ def quicksort(lst, f=None, pivot=None):
     if len(lst) <= 1:
         return lst
 
+    AlgorithmicRun.operation_counter += 1
+
     if not (f is None):
         pivot = f(lst)
         lst.remove(pivot)
     elif pivot is None:
         raise ValueError
 
-    #   print("pivot:", pivot)
-
+    # General case
     lst_lower = []
     lst_upper = []
     for n in lst:
-        AlgorithmicRun.operation_counter += 1
-        #       print(type(n), type(pivot))
         if n < pivot:
             lst_lower.append(n)
         else:
             lst_upper.append(n)
-    #   print(lst_lower, lst_upper)
-    #   print("gello:", len(lst_upper), len(lst_lower))
 
+    # Concatenate the two quicksorts
     if not (f is None):
         return quicksort(lst_lower, f=f) + [pivot] + quicksort(lst_upper, f=f)
     else:
@@ -51,5 +49,3 @@ def to_run(l):
 
 AlgorithmicRun.run_algorithm(to_run)
 
-# print("in:", l)
-# print("out: ", quicksort(l, f))
