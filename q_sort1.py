@@ -8,7 +8,6 @@ def quicksort(lst, f=None, pivot=None):
     if len(lst) <= 1:
         return lst
 
-    AlgorithmicRun.operation_counter += 1
 
     if not (f is None):
         pivot = f(lst)
@@ -20,6 +19,7 @@ def quicksort(lst, f=None, pivot=None):
     lst_lower = []
     lst_upper = []
     for n in lst:
+        AlgorithmicRun.operation_counter += 1
         if n < pivot:
             lst_lower.append(n)
         else:
@@ -46,6 +46,7 @@ def f3(lst): return choice(lst)
 def to_run(l):
     return quicksort(l, f3)
 
-
+AlgorithmicRun.max_val = 10000
+AlgorithmicRun.min_val = 0
 AlgorithmicRun.run_algorithm(to_run)
 

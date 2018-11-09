@@ -1,7 +1,7 @@
 # A class (Yea, sorry. We used a class in python) to visualize the current list in the terminal
 class Graphics:
 
-    def __init__(self, max_val=1000, min_val=0, print_size_x=100, print_size_y=100):
+    def __init__(self, min_val=0, max_val=1000, print_size_x=100, print_size_y=100):
         # The highest value that the values in the list can have
         self.max_val = max_val
 
