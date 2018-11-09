@@ -10,10 +10,18 @@ def quicksort(lst, f=None, pivot=None):
     elif pivot is None:
         raise ValueError
 
-    lst1 = []
-    lst2 = []
+    lst_lower = []
+    lst_upper = []
     for n in lst:
-        lst
+        if n < pivot:
+            lst_lower.append(n)
+        else:
+            lst_upper.append(n)
+    
+    if not (f is None):
+        pivot = f(lst)
+    elif pivot is None:
+        raise ValueError
 
 
 
