@@ -1,6 +1,3 @@
-from q_sort1 import generate_list
-
-
 # A class (Yea, sorry. We used a class in python) to visualize the current list in the terminal
 class Graphics:
 
@@ -46,12 +43,3 @@ class Graphics:
             output += '\n'
         output += '\n' + ('=' * self.print_size_x) + '\n\n\n'
         return output
-
-
-def try_graphics():
-    graphics = Graphics(100, 0, 100)
-
-    print(graphics.generate(generate_list(100, 0, 200)))
-
-
-try_graphics()
