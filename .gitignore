@@ -2,8 +2,10 @@
 *.swp
 *.swo
 .idea
+
+__pycache__
+
 latex/*.pdf
 latex/*.log
 latex/*.aux
-__pycache__
 
