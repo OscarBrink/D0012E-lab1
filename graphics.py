@@ -30,9 +30,9 @@ class Graphics:
         # can be outputted and checks if the
         # value on the index is higher than
         # that value
-        for pos_y in range(self.max_val - self.min_val, 0, -1 * delta_y):
+        for pos_y in range(self.max_val - self.min_val, 0, -1 * max(delta_y, 1)):
 
-            for pos_x in range(0, len(input_list), delta_x):
+            for pos_x in range(0, len(input_list), max(delta_x, 1)):
 
                 if pos_y <= input_list[pos_x]:
                     output += '|'

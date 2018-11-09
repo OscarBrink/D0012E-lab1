@@ -5,6 +5,7 @@ import graphics
 
 def quicksort(lst, f=None, pivot=None):
 
+    # Base Case
     if len(lst) <= 1:
         return lst
 
@@ -37,11 +38,16 @@ def quicksort(lst, f=None, pivot=None):
 def generate_list(min_val, max_val, size):
     return [randint(min_val, max_val) for i in range(size)]
 
+g = graphics.Graphics(10, 0, 100, 20)
 
-l = generate_list(0, 100, 100)
+l = generate_list(0, 10, 100)
 
 def f(lst): return lst[len(lst)//2]
 
-print("in:", l)
-print("out: ", quicksort(l, f))
+print("NOT SORTED:\n" + g.generate(l))
+
+print("SORTED:\n" + g.generate(quicksort(l, f)))
+
+#print("in:", l)
+#print("out: ", quicksort(l, f))
 
