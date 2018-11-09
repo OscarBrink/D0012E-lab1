@@ -1,9 +1,8 @@
 from random import choice
-from AlgorithmicRun import run_algorithm, operation_counter
+import AlgorithmicRun
 
 
 def quicksort(lst, f=None, pivot=None):
-    global operation_counter
 
     # Base Case
     if len(lst) <= 1:
@@ -20,7 +19,7 @@ def quicksort(lst, f=None, pivot=None):
     lst_lower = []
     lst_upper = []
     for n in lst:
-        operation_counter += 1
+        AlgorithmicRun.operation_counter += 1
         #       print(type(n), type(pivot))
         if n < pivot:
             lst_lower.append(n)
@@ -50,7 +49,7 @@ def to_run(l):
     return quicksort(l, f3)
 
 
-run_algorithm(to_run)
+AlgorithmicRun.run_algorithm(to_run)
 
 # print("in:", l)
 # print("out: ", quicksort(l, f))
