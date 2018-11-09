@@ -3,7 +3,10 @@ from time import time
 
 import graphics
 
+operation_counter = 0
+
 def quicksort(lst, f=None, pivot=None):
+    global operation_counter
 
     # Base Case
     if len(lst) <= 1:
@@ -20,6 +23,7 @@ def quicksort(lst, f=None, pivot=None):
     lst_lower = []
     lst_upper = []
     for n in lst:
+        operation_counter += 1
 #       print(type(n), type(pivot))
         if n < pivot:
             lst_lower.append(n)
@@ -47,6 +51,8 @@ def f(lst): return lst[len(lst)//2]
 print("NOT SORTED:\n" + g.generate(l))
 
 print("SORTED:\n" + g.generate(quicksort(l, f)))
+print("Size:", len(l))
+print("Comparisons:", operation_counter)
 
 #print("in:", l)
 #print("out: ", quicksort(l, f))
