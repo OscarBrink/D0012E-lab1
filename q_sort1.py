@@ -40,17 +40,19 @@ def quicksort(lst, f=None, pivot=None):
                 quicksort(lst_upper, pivot=lst_upper[len(lst_upper)//2])
 
 def generate_list(min_val, max_val, size):
-    return [randint(min_val, max_val) for i in range(size)]
+    return [randint(min_val, max_val) for i in range(size + 1)]
 
-g = graphics.Graphics(10, 0, 100, 20)
+g = graphics.Graphics(10000, 0, 100, 20)
 
-l = generate_list(0, 10, 100)
+l = generate_list(0, 10000, 1000)
 
 def f(lst): return lst[len(lst)//2]
+def f2(lst): return lst[len(lst)//4]
+def f3(lst): return choice(lst)
 
 print("NOT SORTED:\n" + g.generate(l))
 
-print("SORTED:\n" + g.generate(quicksort(l, f)))
+print("SORTED:\n" + g.generate(quicksort(l, f3)))
 print("Size:", len(l))
 print("Comparisons:", operation_counter)
 
