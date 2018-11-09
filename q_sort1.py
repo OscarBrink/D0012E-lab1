@@ -34,10 +34,13 @@ def quicksort(lst, f=None, pivot=None):
                 [pivot] + \
                 quicksort(lst_upper, pivot=lst_upper[len(lst_upper)//2])
 
-l = [randint(0, 100) for i in range (1000)]
-def f(lst):
-#   print(len(lst))
-    return lst[len(lst)//2]
+def generate_list(min_val, max_val, size):
+    return [randint(min_val, max_val) for i in range(size)]
+
+
+l = generate_list(0, 100, 100)
+
+def f(lst): return lst[len(lst)//2]
 
 print("in:", l)
 print("out: ", quicksort(l, f))
