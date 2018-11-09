@@ -24,7 +24,7 @@ class Graphics:
         # range
         delta_y = (self.max_val - self.min_val) // self.print_size_y
 
-        output = ('=' * self.print_size_x) + '\n\n'
+        output = ('=' * (self.print_size_x + 1)) + '\n\n'
 
         # Goes through every possible line that
         # can be outputted and checks if the
@@ -41,5 +41,5 @@ class Graphics:
                     output += ' '
 
             output += '\n'
-        output += '\n' + ('=' * self.print_size_x) + '\n\n\n'
+        output += '\n' + ('=' * (self.print_size_x + 1)) + '\n\n\n'
         return output
