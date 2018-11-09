@@ -1,12 +1,8 @@
-from random import choice, randint, seed
-from time import time
+from random import choice
+import AlgorithmicRun
 
-import graphics
-
-operation_counter = 0
 
 def quicksort(lst, f=None, pivot=None):
-    global operation_counter
 
     # Base Case
     if len(lst) <= 1:
@@ -18,44 +14,42 @@ def quicksort(lst, f=None, pivot=None):
     elif pivot is None:
         raise ValueError
 
-#   print("pivot:", pivot)
+    #   print("pivot:", pivot)
 
     lst_lower = []
     lst_upper = []
     for n in lst:
-        operation_counter += 1
-#       print(type(n), type(pivot))
+        AlgorithmicRun.operation_counter += 1
+        #       print(type(n), type(pivot))
         if n < pivot:
             lst_lower.append(n)
         else:
             lst_upper.append(n)
-#   print(lst_lower, lst_upper)
-#   print("gello:", len(lst_upper), len(lst_lower))
-    
+    #   print(lst_lower, lst_upper)
+    #   print("gello:", len(lst_upper), len(lst_lower))
+
     if not (f is None):
-        return  quicksort(lst_lower, f=f) + [pivot] + quicksort(lst_upper, f=f)
+        return quicksort(lst_lower, f=f) + [pivot] + quicksort(lst_upper, f=f)
     else:
-        return  quicksort(lst_lower, pivot=lst_lower[len(lst_lower)//2]) + \
-                [pivot] + \
-                quicksort(lst_upper, pivot=lst_upper[len(lst_upper)//2])
+        return quicksort(lst_lower, pivot=lst_lower[len(lst_lower) // 2]) + \
+               [pivot] + \
+               quicksort(lst_upper, pivot=lst_upper[len(lst_upper) // 2])
 
-def generate_list(min_val, max_val, size):
-    return [randint(min_val, max_val) for i in range(size + 1)]
 
-g = graphics.Graphics(10000, 0, 100, 20)
+def f(lst): return lst[len(lst) // 2]
 
-l = generate_list(0, 10000, 1000)
 
-def f(lst): return lst[len(lst)//2]
-def f2(lst): return lst[len(lst)//4]
+def f2(lst): return lst[len(lst) // 4]
+
+
 def f3(lst): return choice(lst)
 
-print("NOT SORTED:\n" + g.generate(l))
 
-print("SORTED:\n" + g.generate(quicksort(l, f3)))
-print("Size:", len(l))
-print("Comparisons:", operation_counter)
+def to_run(l):
+    return quicksort(l, f3)
 
-#print("in:", l)
-#print("out: ", quicksort(l, f))
 
+AlgorithmicRun.run_algorithm(to_run)
+
+# print("in:", l)
+# print("out: ", quicksort(l, f))
