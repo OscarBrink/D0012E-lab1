@@ -2,6 +2,8 @@ from random import choice
 import AlgorithmicRun
 import graphics
 
+from time import sleep
+
 
 def quicksort(lst, f=None, pivot=None):
     # Base Case
@@ -150,8 +152,8 @@ def quicksort3(l, pivot=None):
         pivot_value = l[pivot]
         first_instance = False
 
-    lower_pivot = None
-    upper_pivot = None
+    lower_pivot = 0
+    upper_pivot = 0
 
     lower = []
     upper = []
@@ -163,7 +165,7 @@ def quicksort3(l, pivot=None):
 
             if instance < pivot_value:
 
-                if lower_pivot is None or abs(pivot_value * 0.5 - instance) < abs(
+                if lower_pivot is 0 or abs(pivot_value * 0.5 - instance) < abs(
                         pivot_value * 0.5 - lower[lower_pivot]):
                     lower_pivot = len(lower)
 
@@ -171,15 +173,28 @@ def quicksort3(l, pivot=None):
 
             else:
 
-                if upper_pivot is None or abs(pivot_value * 1.5 - instance) < abs(
+                if upper_pivot is 0 or abs(pivot_value * 1.5 - instance) < abs(
                         pivot_value * 1.5 - upper[upper_pivot]):
                     upper_pivot = len(upper)
 
                 upper.append(instance)
+    print("pivot:", pivot_value)
+    print("lower:", len(lower), lower_pivot)
+    try: print(lower[lower_pivot]) 
+    except IndexError: print("empty")
+    print("upper:", len(upper), upper_pivot)
+    try: print(upper[upper_pivot]) 
+    except IndexError: print("empty")
+    print()
 
     return quicksort3(lower, lower_pivot) + ([pivot_value] if not first_instance else []) + quicksort3(upper, upper_pivot)
 
 
 AlgorithmicRun.max_val = 10000
 AlgorithmicRun.min_val = 0
-AlgorithmicRun.run_algorithm(to_run)
+try:
+    AlgorithmicRun.run_algorithm(to_run)
+except KeyboardInterrupt:
+    print("Oscar Keyboard-interruptade")
+except IndexError:
+    print("IndexError")
