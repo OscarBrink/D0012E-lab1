@@ -1,0 +1,23 @@
+\section{Theory}
+   \begin{algorithm}
+        \caption{Quicksort}
+            \begin{algorithmic}[1]
+                \Procedure{S(L)}{}
+                    \BState \emph{Base case}:
+                    \If {$L < 1$} \Return L
+                    \EndIf
+                    \BState \emph{General case}:
+                    \State Select a pivot element $p$ from $L$
+                    \BState \emph{loop}:
+                    \State Let $M$, and $N$ be lists
+                    \State Let $x \epsilon L$
+                    \State \For {all $x < p$} add $x$ to $M$
+                    \EndFor
+                    \State \For {all $x \geq p$} add $x$ to $N$
+                    \EndFor
+                    \State sort $M$ and $N$ by performing $S(M)$ and $S(N)$
+                    \State Add the two lists $M$ and $N$ with $p$ in the middle
+                \EndProcedure
+            \end{algorithmic}
+    \end{algorithm}
+
