@@ -88,21 +88,6 @@ def quicksort2(lst, pivot=None):
     return quicksort2(lst_lower) + [pivot] + quicksort2(lst_upper)
 
 
-def f(lst): return lst[len(lst) // 2]
-
-
-def f2(lst): return lst[len(lst) // 4]
-
-
-def f3(lst): return choice(lst)
-
-
-def to_run(l):
-    # return quicksort(l, f3)
-    # return quicksort2(l)
-    return quicksort3(l)
-
-
 def kinda_sort(l):
     max_val = None
     min_val = None
@@ -178,23 +163,34 @@ def quicksort3(l, pivot=None):
                     upper_pivot = len(upper)
 
                 upper.append(instance)
-    print("pivot:", pivot_value)
-    print("lower:", len(lower), lower_pivot)
-    try: print(lower[lower_pivot]) 
-    except IndexError: print("empty")
-    print("upper:", len(upper), upper_pivot)
-    try: print(upper[upper_pivot]) 
-    except IndexError: print("empty")
-    print()
+#   print("pivot:", pivot_value)
+#   print("lower:", len(lower), lower_pivot)
+#   try: print(lower[lower_pivot]) 
+#   except IndexError: print("empty")
+#   print("upper:", len(upper), upper_pivot)
+#   try: print(upper[upper_pivot]) 
+#   except IndexError: print("empty")
+#   print()
 
     return quicksort3(lower, lower_pivot) + ([pivot_value] if not first_instance else []) + quicksort3(upper, upper_pivot)
 
 
-AlgorithmicRun.max_val = 10000
+def f(lst): return lst[len(lst) // 2]
+def f2(lst): return lst[len(lst) // 4]
+def f3(lst): return choice(lst)
+
+def to_run(l):
+    return quicksort(l, f3)
+    # return quicksort2(l)
+#   return quicksort3(l)
+
+AlgorithmicRun.max_val = 10
 AlgorithmicRun.min_val = 0
+AlgorithmicRun.size = 1000000
 try:
     AlgorithmicRun.run_algorithm(to_run)
 except KeyboardInterrupt:
-    print("Oscar Keyboard-interruptade")
+    print("Keyboard-interrupt")
 except IndexError:
     print("IndexError")
+
