@@ -1,7 +1,6 @@
 from random import choice
 import AlgorithmicRun
-import graphics
-
+import graphics 
 from time import sleep
 
 
@@ -180,13 +179,14 @@ def f2(lst): return lst[len(lst) // 4]
 def f3(lst): return choice(lst)
 
 def to_run(l):
-    return quicksort(l, f3)
+#   return quicksort(l, f3)
+    return kinda_sort(l)
     # return quicksort2(l)
 #   return quicksort3(l)
 
-AlgorithmicRun.max_val = 10
+AlgorithmicRun.max_val = 10000
 AlgorithmicRun.min_val = 0
-AlgorithmicRun.size = 1000000
+AlgorithmicRun.size = 100000
 try:
     AlgorithmicRun.run_algorithm(to_run)
 except KeyboardInterrupt:
