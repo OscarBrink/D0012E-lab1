@@ -27,24 +27,28 @@ def quicksort(lst, f=None):
 
 
 def middle_pivot(lst): return lst[len(lst) // 2]
-#def f2(lst): return lst[len(lst) // 4]
 def random_pivot(lst): return choice(lst)
+
 def n_median_pivot(lst, amount):
 #   print("len:", len(lst))
     step = len(lst) // (amount - 1)
     index = 0
     elems = []
 
-    while index < len(lst):
-        try:
-            elems.append(lst[index])
-            index += step
-        except IndexError:
-            break
+    if len(lst) > amount:
+        while index < len(lst):
+            try:
+                elems.append(lst[index])
+                index += step
+            except IndexError:
+                break
 
-    # If the length of list is even, the last elem has to be appended
-    if len(elems) < amount and len(lst) >= amount:
-        elems.append(lst[-1])
+        # If the length of list is even, the last elem has to be appended
+        if len(elems) < amount and len(lst) >= amount:
+            elems.append(lst[-1])
+    else:
+        # Copy lst into elems if smaller than amount
+        elems = lst[:]
 
 #   print("elems:", len(elems))
     # for now inefficient sort
@@ -63,13 +67,19 @@ def n_median_pivot(lst, amount):
 #   print(elems[ceil(len(elems)/2) - 1])
     return elems[ceil(len(elems)/2) - 1]
 
-def to_run(l):
-#   return quicksort(l, lambda lst : n_median_pivot(lst, len(lst)))
-    return quicksort(l, random_pivot)
+div_3 = lambda lst: n_median_pivot(lst, 3)
+div_5 = lambda lst: n_median_pivot(lst, 5)
+div_7 = lambda lst: n_median_pivot(lst, 7)
 
-AlgorithmicRun.max_val = 10000
+
+def to_run(l):
+    return quicksort(l, div_7)
+#   return quicksort(l, random_pivot)
+
+AlgorithmicRun.max_val = 1000000
 AlgorithmicRun.min_val = 0
-AlgorithmicRun.size = 1000
+AlgorithmicRun.size = 10000000
+
 try:
     AlgorithmicRun.run_algorithm_gfx(to_run)
 #   AlgorithmicRun.median(lambda lst : n_median_pivot(lst, 3))
