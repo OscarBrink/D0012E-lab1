@@ -1,5 +1,5 @@
 from random import choice, randint, seed
-from math import log
+from math import log, floor
 from time import time
 
 import graphics
@@ -44,8 +44,28 @@ def median(function_to_run):
     print(function_to_run(l))
     print(sorted(l, key=int))
 
-def generate_list(min_val, max_val, size):
-    return [randint(min_val, max_val) for i in range(size)]
+# Generates a list that is rando
+def generate_list(min_val, max_val, size, complexity = 0):
+
+    complexity = max(min(1, complexity), 0)
+
+    delta = (max_val - min_val) / size
+    output = []
+
+    for i in range(size):
+        output.append(floor(i * delta * complexity + \
+                randint(min_val, max_val) * (1 - complexity)))
+
+    return output
+
+def calculate_inversion(input_list):
+    counter = 0
+
+    for i in range(len(input_list) - 1):
+        counter += 1 if input_list[i] > input_list[i + 1] else 0
+
+    return counter / len(input_list)
+
 
 def is_sorted(lst):
     prev = lst[0]
@@ -54,4 +74,17 @@ def is_sorted(lst):
             return False
         prev = item
     return True
+
+def test():
+    g = graphics.Graphics(0, 80, 80, 80)
+    l = generate_list(0, 80, 80, 0.9)
+
+    print(g.generate(l))
+    print(calculate_inversion(l))
+
+
+
+
+
+
 
