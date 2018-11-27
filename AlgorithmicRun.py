@@ -75,11 +75,12 @@ def is_sorted(lst):
         prev = item
     return True
 
-g = graphics.Graphics(0, 80, 80, 80)
-l = generate_list(0, 80, 80, 0.9)
+def test():
+    g = graphics.Graphics(0, 80, 80, 80)
+    l = generate_list(0, 80, 80, 0.9)
 
-print(g.generate(l))
-print(calculate_inversion(l))
+    print(g.generate(l))
+    print(calculate_inversion(l))
 
 
 
