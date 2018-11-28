@@ -1,15 +1,17 @@
 from random import choice, randint, seed
 from math import log, floor
-from time import time
+from time import millis
 
 import graphics
 
 operation_counter = 0
+run_time = 0
 max_val = 10000
 min_val = 0
 size = 1000
 #Självkommenterande kod
 def run_algorithm_gfx(function_to_run):
+    global run_time
     g = graphics.Graphics(min_val, max_val, 275, 20)
 #   g = graphics.Graphics(min_val, max_val, 100, 20)
 
@@ -17,7 +19,10 @@ def run_algorithm_gfx(function_to_run):
 
     print("NOT SORTED:\n" + g.generate(l))
 
+    last_time = millis()
     sorted_l = function_to_run(l)
+    run_time = millis() - last_time
+
     print("SORTED:\n" + g.generate(sorted_l))
     print("Sort check:", "passed" if is_sorted(sorted_l) else "failed")
     print("Size:", len(l))
@@ -27,8 +32,12 @@ def run_algorithm_gfx(function_to_run):
     return operation_counter
 
 def run_algorithm(function_to_run, l):
-    
+    global run_time
+
+    last_time = millis()
     sorted_l = function_to_run(l)
+    run_time = millis() - last_time
+
     print("Sort check:", "passed" if is_sorted(sorted_l) else "failed")
     print("Size:", len(l))
     print("Comparisons:", operation_counter)
@@ -38,8 +47,13 @@ def run_algorithm(function_to_run, l):
 
 def run_algorithm_nopr(function_to_run, l):
     global operation_counter
-    function_to_run(l)
-    return_value = operation_counter, 10
+    global run_time
+    
+    last_time = millis()
+    sorted_l = function_to_run(l)
+    run_time = millis() - last_time
+
+    return_value = operation_counter, run_time
     operation_counter = 0
     return return_value
 
