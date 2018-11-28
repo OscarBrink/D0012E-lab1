@@ -67,18 +67,18 @@ def n_median_pivot(lst, amount):
 #   print(elems[ceil(len(elems)/2) - 1])
     return elems[ceil(len(elems)/2) - 1]
 
-div_3 = lambda lst: n_median_pivot(lst, 3)
-div_5 = lambda lst: n_median_pivot(lst, 5)
-div_7 = lambda lst: n_median_pivot(lst, 7)
+med_3 = lambda lst: n_median_pivot(lst, 3)
+med_5 = lambda lst: n_median_pivot(lst, 5)
+med_7 = lambda lst: n_median_pivot(lst, 7)
 
 
 def to_run(l):
-    return quicksort(l, div_7)
+    return quicksort(l, med_7)
 #   return quicksort(l, random_pivot)
 
 AlgorithmicRun.max_val = 1000000
 AlgorithmicRun.min_val = 0
-AlgorithmicRun.size = 10000000
+AlgorithmicRun.size = 100000
 
 try:
     AlgorithmicRun.run_algorithm_gfx(to_run)
