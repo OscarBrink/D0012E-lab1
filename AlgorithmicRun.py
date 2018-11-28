@@ -8,7 +8,7 @@ operation_counter = 0
 max_val = 10000
 min_val = 0
 size = 1000
-
+#Självkommenterande kod
 def run_algorithm_gfx(function_to_run):
     g = graphics.Graphics(min_val, max_val, 275, 20)
 #   g = graphics.Graphics(min_val, max_val, 100, 20)
@@ -37,6 +37,7 @@ def run_algorithm(function_to_run, l):
     return operation_counter
 
 def run_algorithm_nopr(function_to_run, l):
+    global operation_counter
     function_to_run(l)
     return_value = operation_counter, 10
     operation_counter = 0
@@ -236,4 +237,4 @@ def test():
 #   print(g.generate(l))
 #   print(1.0 - calculate_inversion(l))
 
-test()
+#test()
