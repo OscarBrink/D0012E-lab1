@@ -7,15 +7,16 @@ import graphics
 operation_counter = 0
 max_val = 10000
 min_val = 0
-size = 1000
+size = 1000000
 
 def run_algorithm_gfx(function_to_run):
     g = graphics.Graphics(min_val, max_val, 275, 20)
 #   g = graphics.Graphics(min_val, max_val, 100, 20)
 
-    l = generate_list(min_val, max_val, size, 0)
+    l = generate_list(min_val, max_val, size, 1.0)
 
     print("NOT SORTED:\n" + g.generate(l))
+    print("Sort check:", "passed" if is_sorted(l) else "failed")
 
     sorted_l = function_to_run(l)
     print("SORTED:\n" + g.generate(sorted_l))
@@ -78,7 +79,7 @@ def calculate_inversion(input_list):
         for j in range(i + 1, len(input_list)):
             counter += 1 if input_list[i] > input_list[j] else 0
             ops += 1
-    print(ops)
+    #print(ops)
 
     return counter / ( ( len(input_list) * (len(input_list) - 1) ) // 2)
 
@@ -182,8 +183,8 @@ def test():
 #   )
 
     generate_lst_to_file(
-            "out.bin",
-            [0.0, 0.5, 0.95],
+            "out2.bin",
+            [0.0, 0.25, 0.5, 0.75, 0.95, 1.0],
             err=0.03,
             min_val=0, max_val=1000000, size=100000,
             tries=60, amount_per_compl=10
