@@ -37,13 +37,20 @@ def runTestFunction(l):
 #Lst is the list, x is the number of element
 def test_lists():
    
-    list_file = read_file("out.bin")
+    list_file = read_file("out2.bin")
     
-    low_complex_list = runTest(list_file[0])
+    list00 = runTest(list_file[0])
 
-    medium_complex_list = runTest(list_file[1])
+    list25 = runTest(list_file[1])
 
-    high_complex_list = runTest(list_file[2])
+    list50 = runTest(list_file[2])
+
+    list75 = runTest(list_file[3])
+
+    list95 = runTest(list_file[4])
+
+    list1 = runTest(list_file[5])
+    
     return [low_complex_list,medium_complex_list,high_complex_list]
     #return {"low_complex_list":low_complex_list,
     #        "medium_complex_list":medium_complex_list,
@@ -70,7 +77,7 @@ def read_file(file_name):
 
 def showDick(dick):
     print("-----------------------------------------")
-    print("Low complexity list")
+    print("0 % complexity ")
     
     for l in dick[0]:
         print(l[0],"&  $" + str(l[1][0]), "$ & $" + str(l[1][1]),"$ ",end="")
@@ -78,19 +85,40 @@ def showDick(dick):
               
 
     print("-----------------------------------------")
-    print("meduim complexity list")
+    print("25 % complexity")
     
     for l in dick[1]:
         print(l[0],"&  $" + str(l[1][0]), "$ & $" + str(l[1][1]),"$ ",end="")
         print(r'\\')
               
     print("-----------------------------------------")
-    print("High complexity list")
+    print("50 %")
     
     for l in dick[2]:
         print(l[0],"&  $" + str(l[1][0]), "$ & $" + str(l[1][1]),"$ ",end="")
         print(r'\\')
+        
+    print("-----------------------------------------")
+    print("75 %")
+    
+    for l in dick[3]:
+        print(l[0],"&  $" + str(l[1][0]), "$ & $" + str(l[1][1]),"$ ",end="")
+        print(r'\\')
 
+         
+    print("-----------------------------------------")
+    print("95 %")
+    
+    for l in dick[4]:
+        print(l[0],"&  $" + str(l[1][0]), "$ & $" + str(l[1][1]),"$ ",end="")
+        print(r'\\')
+
+    print("-----------------------------------------")
+    print("100 %")
+    
+    for l in dick[5]:
+        print(l[0],"&  $" + str(l[1][0]), "$ & $" + str(l[1][1]),"$ ",end="")
+        print(r'\\')
 
 showDick(test_lists())
     
