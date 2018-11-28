@@ -68,4 +68,15 @@ def read_file(file_name):
 
     return compls
 
- 
+def showDick(dick):
+    for lst in dick:
+        print("--------------------------------------------")
+        for l in lst:
+            print(l)
+
+
+
+
+
+
+        
