@@ -69,13 +69,31 @@ def read_file(file_name):
     return compls
 
 def showDick(dick):
-    for lst in dick:
-        print("--------------------------------------------")
-        for l in lst:
-            print(l)
+    print("-----------------------------------------")
+    print("Low complexity list")
+    
+    for l in dick[0]:
+        print(l[0],"&  $" + str(l[1][0]), "$ & $" + str(l[1][1]),"$ ",end="")
+        print(r'\\')
+              
+
+    print("-----------------------------------------")
+    print("meduim complexity list")
+    
+    for l in dick[1]:
+        print(l[0],"&  $" + str(l[1][0]), "$ & $" + str(l[1][1]),"$ ",end="")
+        print(r'\\')
+              
+    print("-----------------------------------------")
+    print("High complexity list")
+    
+    for l in dick[2]:
+        print(l[0],"&  $" + str(l[1][0]), "$ & $" + str(l[1][1]),"$ ",end="")
+        print(r'\\')
 
 
-
+showDick(test_lists())
+    
 
 
 
