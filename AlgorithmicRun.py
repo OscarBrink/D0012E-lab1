@@ -1,6 +1,6 @@
 from random import choice, randint, seed
 from math import log, floor
-from time import millis
+from time import time
 
 import graphics
 
@@ -19,9 +19,9 @@ def run_algorithm_gfx(function_to_run):
 
     print("NOT SORTED:\n" + g.generate(l))
 
-    last_time = millis()
+    last_time = time()
     sorted_l = function_to_run(l)
-    run_time = millis() - last_time
+    run_time = int((time() - last_time) * 1000)
 
     print("SORTED:\n" + g.generate(sorted_l))
     print("Sort check:", "passed" if is_sorted(sorted_l) else "failed")
@@ -34,9 +34,9 @@ def run_algorithm_gfx(function_to_run):
 def run_algorithm(function_to_run, l):
     global run_time
 
-    last_time = millis()
+    last_time = time()
     sorted_l = function_to_run(l)
-    run_time = millis() - last_time
+    run_time = int((time() - last_time) * 1000)
 
     print("Sort check:", "passed" if is_sorted(sorted_l) else "failed")
     print("Size:", len(l))
@@ -49,9 +49,9 @@ def run_algorithm_nopr(function_to_run, l):
     global operation_counter
     global run_time
     
-    last_time = millis()
+    last_time = time()
     sorted_l = function_to_run(l)
-    run_time = millis() - last_time
+    run_time = int((time() - last_time) * 1000)
 
     return_value = operation_counter, run_time
     operation_counter = 0
