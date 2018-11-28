@@ -40,5 +40,23 @@ def test_lists():
         slumped_lists.append(generate_list(0,list_size,list_size,0.5))
     #
 
+def read_file(file_name):
+    compls = []
+    with open(file_name, "rb") as f:
+        len_compls = int.from_bytes(f.read(4), "little")
+        for i in range(len_compls):
+            nominal_compl = int.from_bytes(f.read(4), "little")
+            len_lists = int.from_bytes(f.read(4), "little")
+            lists = []
+            for j in range(len_lists):
+                real_compl = int.from_bytes(f.read(4), "little")
+                len_list = int.from_bytes(f.read(4), "little")
+                l = []
+                for k in range(len_list):
+                    l.append(int.from_bytes(f.read(4), "little"))
+                lists.append(l)
+            compls.append((nominal_comp, lists))
 
-    
+    return compls
+
+ 
