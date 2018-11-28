@@ -75,16 +75,16 @@ med_7 = lambda lst: n_median_pivot(lst, 7)
 def to_run(l):
     return quicksort(l, med_7)
 #   return quicksort(l, random_pivot)
+def shite():
+    AlgorithmicRun.max_val = 1000000
+    AlgorithmicRun.min_val = 0
+    AlgorithmicRun.size = 100000
 
-AlgorithmicRun.max_val = 1000000
-AlgorithmicRun.min_val = 0
-AlgorithmicRun.size = 100000
-
-try:
-    AlgorithmicRun.run_algorithm_gfx(to_run)
-#   AlgorithmicRun.median(lambda lst : n_median_pivot(lst, 3))
-except KeyboardInterrupt:
-    print("Keyboard-interrupt")
-except IndexError:
-    print("IndexError")
-
+    try:
+        AlgorithmicRun.run_algorithm_gfx(to_run)
+    #   AlgorithmicRun.median(lambda lst : n_median_pivot(lst, 3))
+    except KeyboardInterrupt:
+        print("Keyboard-interrupt")
+    except IndexError:
+        print("IndexError")
+    return
