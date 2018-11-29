@@ -18,17 +18,19 @@ def quicksort(lst, f=None, start=0, end=None):
 
     try:
         pivot_index = lst.index(f(lst[start:end]))
-        print(lst[start:end])
-        print(sorted(lst[start:end]))
-        print(pivot_index, lst[pivot_index])
+        # print(lst[start:end])
+        # print(sorted(lst[start:end]))
+        # print(pivot_index, lst[pivot_index])
     except ValueError:
-        print("Pivot value is not an element of lst")
+        # print("Pivot value is not an element of lst")
         return
+
+    temp = lst[start:end]
 
     lst[pivot_index], lst[start] = lst[start], lst[pivot_index]
     pivot_index = start
 
-    for i in range(start + 1, end + 1):
+    for i in range(start + 1, end):
         if lst[i] <= lst[pivot_index]:
             lst.insert(pivot_index, lst.pop(i))
             if pivot_index < end:
