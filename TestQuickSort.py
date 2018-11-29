@@ -27,13 +27,15 @@ def quicksort(array, start=0, end=None):
         end = len(array) - 1
 
     if end - start < 1:
-        return
+        return array
 
     idx_pivot = randint(start, end)
     i = sub_partition(array, start, end, idx_pivot)
     #print array, i, idx_pivot
     quicksort(array, start, i - 1)
     quicksort(array, i + 1, end)
+
+    return array
 
 def LstGen(min,max,n):
     i=0
@@ -42,3 +44,5 @@ def LstGen(min,max,n):
         lst.append(randint(min,max))
         i = i+1
     return lst
+
+
