@@ -12,6 +12,7 @@ def quicksort(lst, f=None, start=0, end=None):
     if end - start == 2:
         if lst[start] > lst[end - 1]:
             lst[start], lst[end - 1] = lst[end - 1], lst[start]
+            AlgorithmicRun.operation_counter += 1
     if end - start <= 2:
         return lst[start:end]
 
@@ -28,15 +29,13 @@ def quicksort(lst, f=None, start=0, end=None):
         if lst[i] <= lst[pivot_index]:
             lst.insert(pivot_index, lst.pop(i))
             pivot_index += 1
+            AlgorithmicRun.operation_counter += 1
 
     return quicksort(lst, f, start, pivot_index) + quicksort(lst, f, pivot_index, end)
 
 
 def temp2(lst):
     return lst[len(lst) // 2]
-
-
-# print(quicksort([2, 45, 2, 1, 5, 3, 7, 12, 4], temp2))
 
 
 def quicksort2(lst, f=None):
@@ -115,8 +114,7 @@ med_7 = lambda lst: n_median_pivot(lst, 7)
 
 
 def to_run(l):
-    return quicksort(l, med_7)
-
+    return quicksort(l, middle_pivot)
 
 #   return quicksort(l, random_pivot)
 def shite():
@@ -132,3 +130,5 @@ def shite():
     except IndexError:
         print("IndexError")
     return
+
+shite()
