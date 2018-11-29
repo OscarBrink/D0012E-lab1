@@ -18,6 +18,9 @@ def quicksort(lst, f=None, start=0, end=None):
 
     try:
         pivot_index = lst.index(f(lst[start:end]))
+        print(lst[start:end])
+        print(sorted(lst[start:end]))
+        print(pivot_index, lst[pivot_index])
     except ValueError:
         print("Pivot value is not an element of lst")
         return
@@ -28,7 +31,8 @@ def quicksort(lst, f=None, start=0, end=None):
     for i in range(start + 1, end + 1):
         if lst[i] <= lst[pivot_index]:
             lst.insert(pivot_index, lst.pop(i))
-            pivot_index += 1
+            if pivot_index < end:
+                pivot_index += 1
             AlgorithmicRun.operation_counter += 1
 
     return quicksort(lst, f, start, pivot_index) + quicksort(lst, f, pivot_index, end)
@@ -120,7 +124,7 @@ def to_run(l):
 def shite():
     AlgorithmicRun.max_val = 1000000
     AlgorithmicRun.min_val = 0
-    AlgorithmicRun.size = 100000
+    AlgorithmicRun.size = 50000
 
     try:
         AlgorithmicRun.run_algorithm_gfx(to_run)

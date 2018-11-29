@@ -15,7 +15,7 @@ def run_algorithm_gfx(function_to_run):
     g = graphics.Graphics(min_val, max_val, 275, 20)
 #   g = graphics.Graphics(min_val, max_val, 100, 20)
 
-    l = generate_list(min_val, max_val, size, 1.0)
+    l = generate_list(min_val, max_val, size, 0.0)
 
     print("NOT SORTED:\n" + g.generate(l))
     print("Sort check:", "passed" if is_sorted(l) else "failed")
