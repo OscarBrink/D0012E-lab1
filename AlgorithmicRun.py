@@ -9,11 +9,13 @@ run_time = 0
 max_val = 10000
 min_val = 0
 size = 1000
-#Självkommenterande kod
+
+
+# Självkommenterande kod
 def run_algorithm_gfx(function_to_run):
     global run_time
     g = graphics.Graphics(min_val, max_val, 275, 20)
-#   g = graphics.Graphics(min_val, max_val, 100, 20)
+    #   g = graphics.Graphics(min_val, max_val, 100, 20)
 
     l = generate_list(min_val, max_val, size, 0.0)
 
@@ -32,6 +34,7 @@ def run_algorithm_gfx(function_to_run):
     print("\nlog2(n)*n:", round(log(len(l), 2) * len(l)))
     return operation_counter
 
+
 def run_algorithm(function_to_run, l):
     global run_time
 
@@ -46,10 +49,11 @@ def run_algorithm(function_to_run, l):
     print("\nlog2(n)*n:", round(log(len(l), 2) * len(l)))
     return operation_counter
 
+
 def run_algorithm_nopr(function_to_run, l):
     global operation_counter
     global run_time
-    
+
     last_time = time()
     sorted_l = function_to_run(l)
     run_time = int((time() - last_time) * 1000)
@@ -58,15 +62,16 @@ def run_algorithm_nopr(function_to_run, l):
     operation_counter = 0
     return return_value
 
+
 def median(function_to_run):
     l = generate_list(min_val, max_val, size)
     print(l)
     print(function_to_run(l))
     print(sorted(l, key=int))
 
-# Generates a list that is rando
-def generate_list(min_val, max_val, size, complexity = 0):
 
+# Generates a list that is rando
+def generate_list(min_val, max_val, size, complexity=0):
     complexity = max(min(1, complexity), 0)
 
     delta = (max_val - min_val) / size
@@ -74,11 +79,12 @@ def generate_list(min_val, max_val, size, complexity = 0):
 
     for i in range(size):
         output.append(floor(i * delta * complexity + \
-                randint(min_val, max_val) * (1 - complexity)))
+                            randint(min_val, max_val) * (1 - complexity)))
 
     return output
 
-#def calculate_inversion(input_list):
+
+# def calculate_inversion(input_list):
 #    counter = 0
 #
 #    for i in range(len(input_list) - 1):
@@ -94,18 +100,25 @@ def calculate_inversion(input_list):
         for j in range(i + 1, len(input_list)):
             counter += 1 if input_list[i] > input_list[j] else 0
             ops += 1
-    #print(ops)
+    # print(ops)
 
-    return counter / ( ( len(input_list) * (len(input_list) - 1) ) // 2)
+    return counter / ((len(input_list) * (len(input_list) - 1)) // 2)
 
 
 def is_sorted(lst):
-    prev = lst[0]
-    for item in lst:
-        if item < prev:
+    for i in range(0, len(lst) - 1):
+        if lst[i] > lst[i + 1]:
+
+            try:
+                print("Instance %d is not right" % i)
+                print("%d: %d" % (i, lst[i]))
+                print("%d: %d" % (i + 1, lst[i + 1]))
+            except:
+                pass
+
             return False
-        prev = item
     return True
+
 
 def generate_lst_to_file(file_name, lists_to_generate, **kwargs):
     for key in ("err", "max_val", "min_val", "size", "tries", "amount_per_compl"):
@@ -131,10 +144,10 @@ def generate_lst_to_file(file_name, lists_to_generate, **kwargs):
 
                 print("Complexity:", complexity, "attempt:", i)
                 lst = generate_list(
-                        kwargs["min_val"], kwargs["max_val"], kwargs["size"], x
+                    kwargs["min_val"], kwargs["max_val"], kwargs["size"], x
                 )
 
-                #inversion = 1.0 - calculate_inversion(lst)
+                # inversion = 1.0 - calculate_inversion(lst)
                 inversion = complexity
                 print("inversion:", inversion)
 
@@ -157,12 +170,12 @@ def generate_lst_to_file(file_name, lists_to_generate, **kwargs):
 
     if len(compls) == 0:
         print("No lists to write")
-        raise ValueError # TODO better exception
+        raise ValueError  # TODO better exception
 
     for i in range(len(compls)):
         if len(compls[i]) == 0:
             print("No lists to write at compl", lists_to_generate[i])
-            raise ValueError # TODO better exception
+            raise ValueError  # TODO better exception
 
     with open(file_name, "wb") as f:
         # write amount of compls
@@ -185,24 +198,25 @@ def generate_lst_to_file(file_name, lists_to_generate, **kwargs):
                     # write elements
                     f.write(j.to_bytes(4, "little"))
 
+
 #   return compls # TODO remove
 
 
 def test():
-#   compls = generate_lst_to_file(
-#           "out.bin",
-#           [0.0, 0.5, 0.95],
-#           err=0.1,
-#           min_val=0, max_val=1000000, size=100,
-#           tries=10, amount_per_compl=10
-#   )
+    #   compls = generate_lst_to_file(
+    #           "out.bin",
+    #           [0.0, 0.5, 0.95],
+    #           err=0.1,
+    #           min_val=0, max_val=1000000, size=100,
+    #           tries=10, amount_per_compl=10
+    #   )
 
     generate_lst_to_file(
-            "out2.bin",
-            [0.0, 0.25, 0.5, 0.75, 0.95, 1.0],
-            err=0.03,
-            min_val=0, max_val=1000000, size=100000,
-            tries=60, amount_per_compl=10
+        "out2.bin",
+        [0.0, 0.25, 0.5, 0.75, 0.95, 1.0],
+        err=0.03,
+        min_val=0, max_val=1000000, size=100000,
+        tries=60, amount_per_compl=10
     )
 
 #   read_compls = []
@@ -224,7 +238,7 @@ def test():
 #   print(bool_test(compls, read_compls))
 
 
-#def bool_test(compl_1, compl_2):
+# def bool_test(compl_1, compl_2):
 #    if len(compl_1) != len(compl_2):
 #        print("compl_len")
 #        return False
@@ -252,4 +266,4 @@ def test():
 #   print(g.generate(l))
 #   print(1.0 - calculate_inversion(l))
 
-#test()
+# test()
