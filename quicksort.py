@@ -15,6 +15,7 @@ def sub_partition(lst, start, end, pivot_index):
     j = start + 1
 
     while j <= end:
+        AlgorithmicRun.operation_counter += 1
         if lst[j] <= pivot:
             lst[j], lst[i] = lst[i], lst[j]
             i += 1
@@ -40,7 +41,7 @@ def quicksort(lst, start=0, end=None, f=None):
 
     return lst
 
-def middle_pivot(lst, start, end): return start + len(lst[start:end]) // 2
+def middle_pivot(lst, start, end): return start + (end - start) // 2
 
 
 def random_pivot(lst, start, end): return start + randint(start, end)
