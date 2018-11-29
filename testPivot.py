@@ -13,21 +13,22 @@ def runTest(slumped_lists):
     #Low Complexity
     complex_list = []
     #Chose random pivot
+    print("random pivot")
     pivot_function_to_run = random_pivot
     for lst in slumped_lists[1]:
-        complex_list.append(("random_pivot", run_algorithm_nopr(runTestFunction,lst)) )
+        complex_list.append(("random_pivot", run_algorithm_nopr(runTestFunction,lst),len(lst) ))
 
     #Choose middle pivot
-    pivot_function_to_run = middle_pivot;
-                            
+    print("middle pivot")
+    pivot_function_to_run = middle_pivot;           
     for lst in slumped_lists[1]:
-        complex_list.append(("middle_pivot", run_algorithm_nopr(runTestFunction,lst)) )
+        complex_list.append(("middle_pivot", run_algorithm_nopr(runTestFunction,lst),len(lst) ))
 
     #Choose n median pivot
     print("n_median_pivot")
     pivot_function_to_run = med_3
     for lst in slumped_lists[1]:
-        complex_list.append(("n_median_pivot", run_algorithm_nopr(runTestFunction,lst)) )
+        complex_list.append(("n_median_pivot", run_algorithm_nopr(runTestFunction,lst),len(lst) ))
     return complex_list
 
 def runTestFunction(l):
@@ -36,9 +37,9 @@ def runTestFunction(l):
 
 #Lst is the list, x is the number of element
 def test_lists():
-   
-    list_file = read_file("out2.bin")
-    
+    print("Reading...")
+    list_file = read_file("out3.bin")
+    print("Calculating list...")
     list00 = runTest(list_file[0])
 
     list25 = runTest(list_file[1])
@@ -51,10 +52,12 @@ def test_lists():
 
     list1 = runTest(list_file[5])
     
-    return [low_complex_list,medium_complex_list,high_complex_list]
+    return [list00,list25,list50,list75,list95,list1]
+
+
     #return {"low_complex_list":low_complex_list,
     #        "medium_complex_list":medium_complex_list,
-     #       "high_complex_list":high_complex_list}
+    #       "high_complex_list":high_complex_list}
 
 def read_file(file_name):
     compls = []
@@ -80,7 +83,7 @@ def showDick(dick):
     print("0 % complexity ")
     
     for l in dick[0]:
-        print(l[0],"&  $" + str(l[1][0]), "$ & $" + str(l[1][1]),"$ ",end="")
+        print(l[0],"&  $" + str(l[1][0]), "$ & $" + str(l[1][1]),"$ ",l[2],end="")
         print(r'\\')
               
 
@@ -88,21 +91,21 @@ def showDick(dick):
     print("25 % complexity")
     
     for l in dick[1]:
-        print(l[0],"&  $" + str(l[1][0]), "$ & $" + str(l[1][1]),"$ ",end="")
+        print(l[0],"&  $" + str(l[1][0]), "$ & $" + str(l[1][1]),"$ ",l[2],end="")
         print(r'\\')
               
     print("-----------------------------------------")
     print("50 %")
     
     for l in dick[2]:
-        print(l[0],"&  $" + str(l[1][0]), "$ & $" + str(l[1][1]),"$ ",end="")
+        print(l[0],"&  $" + str(l[1][0]), "$ & $" + str(l[1][1]),"$ ",l[2],end="")
         print(r'\\')
-        
+    
     print("-----------------------------------------")
     print("75 %")
     
     for l in dick[3]:
-        print(l[0],"&  $" + str(l[1][0]), "$ & $" + str(l[1][1]),"$ ",end="")
+        print(l[0],"&  $" + str(l[1][0]), "$ & $" + str(l[1][1]),"$ ",l[2],end="")
         print(r'\\')
 
          
@@ -110,14 +113,14 @@ def showDick(dick):
     print("95 %")
     
     for l in dick[4]:
-        print(l[0],"&  $" + str(l[1][0]), "$ & $" + str(l[1][1]),"$ ",end="")
+        print(l[0],"&  $" + str(l[1][0]), "$ & $" + str(l[1][1]),"$ ",l[2],end="")
         print(r'\\')
 
     print("-----------------------------------------")
     print("100 %")
     
     for l in dick[5]:
-        print(l[0],"&  $" + str(l[1][0]), "$ & $" + str(l[1][1]),"$ ",end="")
+        print(l[0],"&  $" + str(l[1][0]), "$ & $" + str(l[1][1]),"$ ",l[2],end="")
         print(r'\\')
 
 showDick(test_lists())

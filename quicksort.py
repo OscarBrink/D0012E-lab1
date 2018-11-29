@@ -10,6 +10,7 @@ def quicksort(lst, f=None):
         return lst
 
     pivot = f(lst)
+    pivot_index = lst.index(pivot)
     lst.remove(pivot)
 
     # General case
@@ -21,6 +22,8 @@ def quicksort(lst, f=None):
             lst_lower.append(n)
         else:
             lst_upper.append(n)
+
+    lst.insert(pivot_index, pivot)
 
     # Concatenate the two quicksorts
     return quicksort(lst_lower, f=f) + [pivot] + quicksort(lst_upper, f=f)
