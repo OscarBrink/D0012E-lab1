@@ -32,7 +32,7 @@ def runTest(slumped_lists):
     return complex_list
 
 def runTestFunction(l):
-    return quicksort(l,pivot_function_to_run)
+    return quicksort(l,f = pivot_function_to_run)
         
 
 #Lst is the list, x is the number of element
